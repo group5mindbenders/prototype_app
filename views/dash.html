@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar Dashboard Template</title>
+    <link rel="stylesheet" href="/public/css/dash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+        <label for="check">
+            <i class="fas fa-bars" aria-hidden="true" id="sidebar_btn"></i>
+        </label>
+        <div class="left_area">
+            <h3>Dashboard</h3>
+        </div>
+        <div class="right_area">
+            <a onclick="logout()" class="logout_btn">Logout</a>
+        </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+        <div class="nav_bar">
+            <i class="fa fa-bars nav_btn"></i>
+        </div>
+        <div class="mobile_nav_items">
+            <a href="#"><i class="fa fa-user-circle " aria-hidden="true "></i><span>Profile</span></a>
+            <a href="# "><i class="fa fa-users " aria-hidden="true "></i><span>Participants</span></a>
+            <a onclick="NotesRender()" href="# "><i class="fa fa-sticky-note-o " aria-hidden="true "></i><span>Whiteboard notes</span></a>
+            <a onclick="QnaLRender()" href="# "><i class="fa fa-file " aria-hidden="true "></i><span>Q&A document</span></a>
+            <a href="# "><i class="fa fa-info-circle " aria-hidden="true "></i><span>Yawning</span></a>
+        </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    
+    <div class="sidebar">
+        <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Profile</span></a>
+        <a href="#"><i class="fa fa-users" aria-hidden="true"></i><span>Participants</span></a>
+        <a onclick="NotesRender()" href="#"><i  class="fa fa-sticky-note" aria-hidden="true"></i><span>Whiteboard notes</span></a>
+        <a onclick="QnaLRender()" href="#"><i  class="fa fa-file" aria-hidden="true"></i><span>Q&A document</span></a>
+        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Yawning</span></a>
+    </div>
+    <!--sidebar end-->
+    <div class='box' id="here"></div>
+    <div class="box1" id="note1"></div>
+    <div class="content"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.nav_btn').click(function() {
+                $('.mobile_nav_items').toggleClass('active');
+            });
+        });
+        $("#Qna").click(function (event) {
+            $('form').append('<input type="hidden" name="choice" value="create">');
+            $('form').fadeOut(500);
+            window.localStorage.setItem('roomname', $("input[name=roomname]").val());
+            $('.wrapper').addClass('form-success');
+            $('form').submit();
+            $.toast({
+                heading: 'Success',
+                text: 'Succesfully registered!!',
+                showHideTransition: 'slide',
+                icon: 'success'
+            });
+        });
+        $("#Notes").click(function (event) {
+            $('form').append('<input type="hidden" name="choice" value="create">');
+            $('form').fadeOut(500);
+            window.localStorage.setItem('roomname', $("input[name=roomname]").val());
+            $('.wrapper').addClass('form-success');
+            $('form').submit();
+            $.toast({
+                heading: 'Success',
+                text: 'Succesfully registered!!',
+                showHideTransition: 'slide',
+                icon: 'success'
+            });
+        });
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/dash.js"></script>
+</body>
+
+</html>

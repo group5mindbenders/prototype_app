@@ -1,1 +1,1 @@
-# prototype_app
+# video-conference-app
